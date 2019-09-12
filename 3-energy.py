@@ -17,18 +17,23 @@ for i in range(Nmu-2):
             d = np.abs(density[j, i]-1)
             cordinate[i] = j
 
-print(cordinate)
+
 
 energy = np.zeros(Nmu-2)
 x = np.zeros(Nmu-2)
 for i in range(Nmu-2):
     c = int(cordinate[i])
     energy[i] = anaF[c, i] + mu[i]
-    print(density[c, i])
     x[i] = rkv[c]
 
 plt.scatter(x, energy)
 
 plt.savefig('./fig/%s-result.png'%mark)
+
+
+print("-----------------------------------------------")
+print("-------------3-energy COMPLETE!----------------")
+print("-----------------------------------------------")
+
 
 #plt.show()

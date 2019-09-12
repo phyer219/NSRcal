@@ -1,17 +1,6 @@
 from nsr import *
 
-Arkv = 0
-Brkv = 3
-Nrkv = 10
-
-rkv = np.linspace(Arkv, Brkv, Nrkv)
-
-
-Amu = -2.1
-Bmu = -1.2
-Nmu = 5
-mu = np.linspace(Amu, Bmu, Nmu)
-
+printParamaters()
 
 #Fn = np.zeros(Nrkv)
 anaFn = np.zeros([Nrkv, Nmu])
@@ -19,7 +8,7 @@ for j in range(Nmu):
     for i in range(Nrkv):
 #        Fn[i] = F(rkv[i], mu[j])
         anaFn[i, j] = anaF(rkv[i], mu[j])
-        print('mu_', j, 'rkv_', i)
+        print("Now calculating ...mu_%i rkv_%i \r"%(j, i), end='')
 #    plt.plot(rkv, Fn)
     plt.plot(rkv, anaFn[:, j], label=r'$\mu/\varepsilon$=%.1f'%mu[j])
 
@@ -34,6 +23,11 @@ np.savetxt('./data/%s-integral.txt'%mark, anaFn)
 np.savetxt('./data/%s-mu.txt'%mark, mu)
 np.savetxt('./data/%s-rkv.txt'%mark, rkv)
 plt.savefig('./fig/%s-integral.png'%mark)
+
+
+print("-----------------------------------------------")
+print("-----------1-integral COMPLETE!----------------")
+print("-----------------------------------------------")
 
 #plt.show()
 #print(FF(1, 2, -1))

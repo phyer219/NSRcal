@@ -8,25 +8,8 @@ from matplotlib import cm
 
 from scipy.special import roots_legendre as leg
 
-mark = 'a1'
+from paramaters import *
 
-rootNum = 10                    # Gaussian Quadrature 积分时取的根的个
-                                # 数.
-beta = 1                        # 温度的倒数.
-zero = 1e-6                     # 积分从零开始时, 为避免发散, 从一个非
-                                # 常小的数值开始积.
-R = 1/30                        # 参数 k_epsilon R 的取值.
-epsabs = 1e-1                   # 用 integrate.quad 积分时限定的绝对误
-                                # 差 .
-
-def printParamaters():
-    print('Root number of Gaussian Quadrature is rootNUm =', rootNum)
-    print('Temperature is beta =', beta)
-    print('Paramater k_epsilon R =', rootNum)
-    print('Small number zero =', zero)
-    print('Absolute error epsabs =', epsabs)
-    return None
-printParamaters()
 #定义用到的函数.
 def xi(k, mu):
     return k**2 - mu
@@ -90,14 +73,6 @@ def anaDelta(omega, q, rkv, mu):
         anaDelta = -np.pi
     return anaDelta
 
-'''
-Nrkv = 100
-rkv = np.linspace(0, 2, Nrkv)
-np.savetxt('rkv.txt', rkv)
-
-Nmu = 10
-mu = np.linspace(-2.1, -1.2, Nmu)
-'''
 def f(omega, q, rkv, mu):
     f = 1 / (np.exp(beta*omega) - 1)
     f = 3*f / np.pi
@@ -127,39 +102,3 @@ def anaF(rkv, mu):
     return F
 
 
-'''
-#Fn = np.zeros(Nrkv)
-anaFn = np.zeros([Nrkv, Nmu])
-for j in range(Nmu):
-    for i in range(Nrkv):
-#        Fn[i] = F(rkv[i], mu[j])
-        anaFn[i, j] = anaF(rkv[i], mu[j])
-        print('mu_', j, 'rkv_', i)
-#    plt.plot(rkv, Fn)
-    plt.plot(rkv, anaFn[:, j], label=r'$\mu/\varepsilon$=%.1f'%mu[j])
-
-np.savetxt('integral.txt', anaFn)
-np.savetxt('mu.txt', mu)
-    
-plt.xlabel(r'$2R/(k_{\varepsilon}^2v)$')
-plt.ylabel(r'Integral')
-plt.title(r'The results of the integral for $\mu$ is from $-2.1$ to $-1.2$ (analytical)') 
-
-plt.legend()
-plt.show()
-#print(FF(1, 2, -1))
-'''
-
-
-'''
-NOO = 100
-OO = np.linspace(-1, 3, NOO)
-ff = np.linspace(-1, 3, NOO)
-anaff = np.linspace(-1, 3, NOO)
-for i in range(NOO):
-    ff[i] = f(OO[i], 2, 2, -1)
-    anaff[i] = anaf(OO[i], 2, 2, -1)
-plt.plot(OO, ff, 'r')
-plt.plot(OO, anaff, 'b')
-plt.show()
-'''

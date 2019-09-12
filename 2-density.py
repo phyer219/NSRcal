@@ -6,9 +6,6 @@ rkv = np.loadtxt('./data/%s-rkv.txt'%mark)
 
 Nrkv, Nmu = anaFn.shape
 
-print(anaFn.shape)
-print(mu)
-
 dd = mu[1] - mu[0]
 
 density = np.zeros([Nrkv, Nmu-2])
@@ -16,6 +13,8 @@ for j in range(Nmu-2):
     for i in range(Nrkv):
         density[i, j] = anaFn[i, j+2] -anaFn[i, j]
         density[i, j] = - density[i, j] / (2*dd)
+
+print("density is")
 print(density)
 
 for i in range(Nmu-2):
@@ -30,5 +29,9 @@ plt.legend()
 
 np.savetxt('./data/%s-density.txt'%mark, density)
 plt.savefig('./fig/%s-density.png'%mark)
+
+print("-----------------------------------------------")
+print("-----------2-density COMPLETE!-----------------")
+print("-----------------------------------------------")
 
 #plt.show()
