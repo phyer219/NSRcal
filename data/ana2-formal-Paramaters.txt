@@ -1,0 +1,13 @@
+-----------------------------------------------
+------------PARAMATERS-------------------------
+-----------------------------------------------
+Marker is mark = ana2-formal
+Root number of Gaussian Quadrature is rootNUm =10
+Temperature is beta = 1
+Paramater k_epsilon R = 0.033
+Small number zero = 0.000001
+Absolute error epsabs = 0.100000
+mu is in [Amu, Bmu] = [-2.1, -0.2] cut into Nmu = 10
+rkv is in [Arkv, Brkv] = [-2.0, 2.0] cut intoNrkv=100
+-----------------------------------------------
+-----------------------------------------------

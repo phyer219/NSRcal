@@ -1,13 +1,9 @@
 from nsr import *
-
+# ----------------------LOAD ---------------------------------
 density = np.loadtxt('./data/%s-density.txt'%mark)
-mu = np.loadtxt('./data/%s-mu.txt'%mark)
-anaF = np.loadtxt('./data/%s-integral.txt'%mark)
-rkv = np.loadtxt('./data/%s-rkv.txt'%mark)
-
-Nrkv, Nmu = density.shape
-Nmu = Nmu + 2
-
+F = np.loadtxt('./data/%s-integral.txt'%mark)
+paperData = np.loadtxt('paperData.csv', delimiter=",")
+# ----------------------LOAD ---------------------------------
 cordinate = np.zeros(Nmu-2)
 
 for i in range(Nmu-2):
@@ -23,14 +19,20 @@ energy = np.zeros(Nmu-2)
 x = np.zeros(Nmu-2)
 for i in range(Nmu-2):
     c = int(cordinate[i])
-    energy[i] = anaF[c, i] + mu[i]
+    energy[i] = F[c, i] + mu[i]
     x[i] = rkv[c]
 
 plt.scatter(x, energy)
+plt.plot(paperData[:, 0], paperData[:, 1])
+
+
+
+# ----------------------SAVE ---------------------------------
+np.savetxt('./data/%s-result-x.txt'%mark, x)
+np.savetxt('./data/%s-result-y.txt'%mark, energy)
 
 plt.savefig('./fig/%s-result.png'%mark)
-
-
+# ----------------------SAVE ---------------------------------
 print("-----------------------------------------------")
 print("-------------3-energy COMPLETE!----------------")
 print("-----------------------------------------------")
