@@ -28,7 +28,13 @@ elif noa=='ana3':
     density = np.zeros([Nrkv, Nmu])
     for j in range(Nmu):
         for i in range(Nrkv):
-            density[i, j], err = integrate.quad(lambda x:anaDensity(x, rkv[i], mu[j]), 0, 3, epsabs=epsabs) 
+            sp = 4*mu[j] + 2*rkv[i]
+            sp = np.sqrt(np.abs(sp))
+            a, err = integrate.quad(lambda x:anaDensity(x, rkv[i], mu[j]),0,
+                                    sp-zero, epsabs=epsabs)
+            b, err = integrate.quad(lambda x:anaDensity(x, rkv[i], mu[j]),
+                                    sp+zero, 10, epsabs=epsabs)
+            density[i, j] = a + b
     for i in range(Nmu):
         plt.plot(rkv, density[:, i],
                  label=r'$\mu/\varepsilon$=%.1f'%mu[i])
