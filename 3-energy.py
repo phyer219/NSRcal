@@ -2,7 +2,7 @@ from nsr import *
 # ----------------------LOAD ---------------------------------
 density = np.loadtxt('./data/%s-density.txt'%mark)
 F = np.loadtxt('./data/%s-integral.txt'%mark)
-paperData = np.loadtxt('paperData.csv', delimiter=",")
+paperData = np.loadtxt('paperDataEnergy.csv', delimiter=",")
 # ----------------------LOAD ---------------------------------
 cordinate = np.zeros(Nmu-2)
 

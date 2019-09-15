@@ -7,7 +7,7 @@ for i in ('ana1', 'ana2', 'ana3'):
     y = np.loadtxt('./data/%s-%s-result-y.txt'%(i, name))
     plt.scatter(x, y, marker='x', label=i)
 # ----------------------LOAD ---------------------------------
-paperData = np.loadtxt('paperData.csv', delimiter=",")
+paperData = np.loadtxt('paperDataEnergy.csv', delimiter=",")
 plt.plot(paperData[:, 0], paperData[:, 1])
 
 plt.legend()

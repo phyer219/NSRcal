@@ -16,7 +16,7 @@ epsabs = 1e-1                   # 用 integrate.quad 积分时限定的绝对误
                                 # 差 .
 
 Arkv = -2
-Brkv = 2
+Brkv = 0
 Nrkv = 100
 
 rkv = np.linspace(Arkv, Brkv, Nrkv)
