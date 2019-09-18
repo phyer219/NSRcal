@@ -2,7 +2,7 @@ import numpy as np
 
 
 #noa = 'num'
-noa = 'ana3'
+noa = 'num'
 name = 'formal'
 mark = '%s-%s'%(noa, name)
 
@@ -16,7 +16,7 @@ epsabs = 1e-1                   # 用 integrate.quad 积分时限定的绝对误
                                 # 差 .
 
 Arkv = -2
-Brkv = 0
+Brkv = 2
 Nrkv = 100
 
 rkv = np.linspace(Arkv, Brkv, Nrkv)
